@@ -1,0 +1,31 @@
+var x = 0,y = 0,z;
+var w = window.innerWidth;
+var h = window.innerHeight;
+var ball = new ball(w/2,h/2);
+function setup() {
+ 
+  createCanvas(w,h);
+  ball.move(x,y);
+}
+function draw() {
+  
+}
+ function ball(x,y)
+{
+  this.x = x;
+  this.y = y;
+  this.vx = 0;
+  this.vy = 0;
+  this.move = function(ax,ay)
+  {
+    this.vx += ax;
+    this.vy += ay;
+    this.x += this.vx;
+    this.y += this.vy;
+    this.x = constrain(this.x,0,w-10);
+    this.y = constrain(this.y,0,h-10);
+    constrain(this.y,0,h);
+    strokeWeight(20);
+    point(this.x,this.y);
+  }
+}
