@@ -24,7 +24,8 @@ function draw() {
     this.y = constrain(this.y,50,h-50);
 	this.x += this.vx;
     this.y += this.vy;
-    
+    this.x = constrain(this.x,50,w-50);
+    this.y = constrain(this.y,50,h-50);
     strokeWeight(100);
     point(this.x,this.y);
   }
