@@ -20,10 +20,11 @@ function draw() {
   {
     this.vx += ax;
     this.vy += ay;
-    this.x += this.vx;
-    this.y += this.vy;
     this.x = constrain(this.x,0,w-50);
     this.y = constrain(this.y,0,h-50);
+	this.x += this.vx;
+    this.y += this.vy;
+    
     constrain(this.y,0,h);
     strokeWeight(100);
     point(this.x,this.y);
