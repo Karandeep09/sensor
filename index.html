@@ -10,13 +10,13 @@
   <script type="text/javascript">
   	let acl = new Accelerometer({frequency: 60});
    acl.addEventListener('reading', () => {
-   alert("Hi"); 	
+   //alert("Hi"); 	
    x = document.getElementById('x');
    y = document.getElementById('y');
    z = document.getElementById('z');
    x.innerHTML = "" + acl.x;
-x.innerHTML = "" +    acl.y;
-   x.innerHTML = "" + acl.z
+   y.innerHTML = "" +    acl.y;
+   z.innerHTML = "" + acl.z
   });
 
 acl.start();
