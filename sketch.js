@@ -5,7 +5,7 @@ var ball = new ball(w/2,h/2);
 function setup() {
  
   createCanvas(w,h);
-  ball.move(x,y);
+  ball.move(-x,y);
 }
 function draw() {
   
