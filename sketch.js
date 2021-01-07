@@ -5,7 +5,7 @@ var ball = new ball(w/2,h/2);
 function setup() {
  
   createCanvas(w,h);
-  ball.move(-x,y);
+  ball.move(-x/5,y/5);
 }
 function draw() {
   
@@ -22,10 +22,10 @@ function draw() {
     this.vy += ay;
     this.x += this.vx;
     this.y += this.vy;
-    this.x = constrain(this.x,0,w-10);
-    this.y = constrain(this.y,0,h-10);
+    this.x = constrain(this.x,0,w-50);
+    this.y = constrain(this.y,0,h-50);
     constrain(this.y,0,h);
-    strokeWeight(20);
+    strokeWeight(100);
     point(this.x,this.y);
   }
 }
