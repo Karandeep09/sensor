@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<p id = "x">X</p>
+	<p id = "y">Y</p>
+    <p id = "z">Z</p>
+  <script type="text/javascript">
+  	let acl = new Accelerometer({frequency: 60});
+   acl.addEventListener('reading', () => {
+   alert("Hi"); 	
+   x = document.getElementById('x');
+   y = document.getElementById('y');
+   z = document.getElementById('z');
+   x.innerHTML = "" + acl.x;
+x.innerHTML = "" +    acl.y;
+   x.innerHTML = "" + acl.z
+  });
+
+acl.start();
+  </script>
+</body>
+</html>
