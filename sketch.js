@@ -20,12 +20,18 @@ function draw() {
   {
     this.vx += ax;
     this.vy += ay;
-    this.x = constrain(this.x,50,w-50);
-    this.y = constrain(this.y,50,h-50);
+	if(this.x < 50)
+		this.vx = Math.max(0,this.vx);
+	if(this.x > w-50)
+		this.vx = Math.min(0,this.vx);
+	if(this.y < 50)
+		this.vy = Math.max(0,this.vy);
+	if(this.y > h-50)
+		this.vy = Math.min(0,this.vy);
+	
 	this.x += this.vx;
     this.y += this.vy;
-    this.x = constrain(this.x,50,w-50);
-    this.y = constrain(this.y,50,h-50);
+
     strokeWeight(100);
     point(this.x,this.y);
   }
