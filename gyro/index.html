@@ -15,15 +15,28 @@ sensor.onreading = () => {
     // console.log("Angular velocity around the X-axis " + sensor.x);
     // console.log("Angular velocity around the Y-axis " + sensor.y);
     // console.log("Angular velocity around the Z-axis " + sensor.z);
-    // var x,y,z;
-    //alert("hi");
-    var x = document.getElementById('x');
-    var y = document.getElementById('y');
-    var z = document.getElementById('z');
-    x.innerHTML = ""+sensor.x;
-    y.innerHTML = ""+sensor.y;
-    z.innerHTML = ""+sensor.z;
-
+    // var x = document.getElementById('x');
+    // var y = document.getElementById('y');
+    // var z = document.getElementById('z');
+    // x.innerHTML = ""+sensor.x;
+    // y.innerHTML = ""+sensor.y;
+    // z.innerHTML = ""+sensor.z;
+    var col = document.body.style;
+     if(sensor.x > 0.5)
+     col.backgroundColor = "#ff0000";
+     else if(sensor.x < -0.5)
+     col.backgroundColor = "#ffff00";
+     else if(sensor.y > 0.5)
+     col.backgroundColor = "#00ff00";
+     else if(sensor.y < -0.5)
+      col.backgroundColor = "#00ffff";
+     else if(sensor.z > 0.5)
+     col.backgroundColor = "#0000ff";  
+     else if(sensor.z < -0.5) 
+     col.backgroundColor = "#ff00ff";
+     else 
+     col.backgroundColor = "#ffffff";
+        
 };
 
 sensor.onerror = event => console.log(event.error.name, event.error.message);
