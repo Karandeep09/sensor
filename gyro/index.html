@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+   <p id = "x"></p>
+   <p id = "y"></p>
+   <p id = "z"></p>
+   <script type="text/javascript">
+   let sensor = new Gyroscope();
+sensor.start();
+
+sensor.onreading = () => {
+    console.log("Angular velocity around the X-axis " + sensor.x);
+    console.log("Angular velocity around the Y-axis " + sensor.y);
+    console.log("Angular velocity around the Z-axis " + sensor.z);
+    var x,y,z;
+    x = document.getElementById('x').innerHTML;
+y = document.getElementById('y').innerHTML;
+z = document.getElementById('z').innerHTML;
+    x = sensor.x;
+    y = sensor.y;
+    z = sensor.z;
+
+};
+
+sensor.onerror = event => console.log(event.error.name, event.error.message);
+   </script>
+
+</body>
+</html>
