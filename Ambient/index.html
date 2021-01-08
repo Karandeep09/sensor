@@ -6,7 +6,7 @@
 <body>
    <p id = "light"> </p>
    <script type="text/javascript">
-   	 if ( 'AmbientLightSensor' in window ) {
+   //	 if ( 'AmbientLightSensor' in window ) {
   const sensor = new AmbientLightSensor();
   sensor.onreading = () => {
     console.log('Current light level:', sensor.illuminance);
@@ -17,8 +17,8 @@
     console.log(event.error.name, event.error.message);
   };
   sensor.start();
- }
- else alert("No");
+ //}
+ //else alert("No");
    </script>
 
 </body>
