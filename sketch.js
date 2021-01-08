@@ -21,13 +21,13 @@ function draw() {
     this.vx += ax;
     this.vy += ay;
 	if(this.x < 50)
-		this.vx = Math.max(0,this.vx);
+		this.vx = -this.vx;
 	if(this.x > w-50)
-		this.vx = Math.min(0,this.vx);
+		this.vx = -this.vx;
 	if(this.y < 50)
-		this.vy = Math.max(0,this.vy);
+		this.vy = -this.vy;
 	if(this.y > h-50)
-		this.vy = Math.min(0,this.vy);
+		this.vy = -this.vy;
 	
 	this.x += this.vx;
     this.y += this.vy;
