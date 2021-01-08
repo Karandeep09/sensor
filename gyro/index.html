@@ -4,9 +4,7 @@
 	<title></title>
 </head>
 <body>
-   <p id = "x"></p>
-   <p id = "y"></p>
-   <p id = "z"></p>
+   <audio id = "aud"></audio>
    <script type="text/javascript">
    let sensor = new Gyroscope();
 sensor.start();
@@ -21,21 +19,16 @@ sensor.onreading = () => {
     // x.innerHTML = ""+sensor.x;
     // y.innerHTML = ""+sensor.y;
     // z.innerHTML = ""+sensor.z;
-    var col = document.body.style;
-     if(sensor.x > 0.5)
-     col.backgroundColor = "#ff0000";
-     else if(sensor.x < -0.5)
-     col.backgroundColor = "#ffff00";
-     else if(sensor.y > 0.5)
-     col.backgroundColor = "#00ff00";
+    var a = document.getElementById("aud");
+     
+      if(sensor.y > 0.5)
+        {a.src = "left.mp3";
+         a.play();
+        }
      else if(sensor.y < -0.5)
-      col.backgroundColor = "#00ffff";
-     else if(sensor.z > 0.5)
-     col.backgroundColor = "#0000ff";  
-     else if(sensor.z < -0.5) 
-     col.backgroundColor = "#ff00ff";
-     else 
-     col.backgroundColor = "#ffffff";
+       {a.src = "right.mp3";
+        a.play();
+       }
         
 };
 
