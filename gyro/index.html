@@ -21,11 +21,11 @@ sensor.onreading = () => {
     // z.innerHTML = ""+sensor.z;
     var a = document.getElementById("aud");
      
-      if(sensor.y > 0.5)
+      if(sensor.y > 1)
         {a.src = "left.mp3";
          a.play();
         }
-     else if(sensor.y < -0.5)
+     else if(sensor.y < -1)
        {a.src = "right.mp3";
         a.play();
        }
