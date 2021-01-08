@@ -28,7 +28,8 @@ function draw() {
 		this.vy = -this.vy;
 	if(this.y > h-50)
 		this.vy = -this.vy;
-	
+	text("Vx = "+this.vx,0,0);
+	text("Vy = "+this.vy,0,50);
 	this.x += this.vx;
     this.y += this.vy;
 
