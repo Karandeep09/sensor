@@ -16,13 +16,13 @@ sensor.onreading = () => {
     // console.log("Angular velocity around the Y-axis " + sensor.y);
     // console.log("Angular velocity around the Z-axis " + sensor.z);
     // var x,y,z;
-    alert("hi");
-    x = document.getElementById('x').innerHTML;
-y = document.getElementById('y').innerHTML;
-z = document.getElementById('z').innerHTML;
-    x = sensor.x;
-    y = sensor.y;
-    z = sensor.z;
+    //alert("hi");
+    var x = document.getElementById('x');
+    var y = document.getElementById('y');
+    var z = document.getElementById('z');
+    x.innerHTML = ""+sensor.x;
+    y.innerHTML = ""+sensor.y;
+    z.innerHTML = ""+sensor.z;
 
 };
 
