@@ -4,34 +4,36 @@
 	<title></title>
   <style>
 .loader {
-  border: 16px solid #f3f3f3;
-  border-radius: 50%;
-  border-top: 16px solid #3498db;
-  width: 120px;
-  height: 120px;
-  -webkit-animation: spin 2s linear infinite; /* Safari */
-  animation: spin 2s linear infinite;
+  height: 0;
+  width: 0;
+  padding: 15px;
+  border: 6px solid #ccc;
+  border-right-color: #888;
+  border-radius: 22px;
+  -webkit-animation: rotate 1s infinite linear;
+  /* left, top and position just for the demo! */
+  position: absolute;
+  left: 50%;
+  top: 50%;
 }
 
-/* Safari */
-@-webkit-keyframes spin {
-  0% { -webkit-transform: rotate(0deg); }
-  100% { -webkit-transform: rotate(360deg); }
-}
-
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+@-webkit-keyframes rotate {
+  /* 100% keyframe for  clockwise. 
+     use 0% instead for anticlockwise */
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
 }
 </style>
 </head>
 <body>
    <audio id = "l" src = "left.mp3" preload="auto" ></audio>
    <audio id = "r" src = "right.mp3" preload="auto"></audio>
-   <script type="text/javascript">
-   let sensor = new Gyroscope();
-sensor.start();
 
+     <div class="loader"></div>
+   
+   <script type="text/javascript">
+let sensor = new Gyroscope();
 sensor.onreading = () => {
     // console.log("Angular velocity around the X-axis " + sensor.x);
     // console.log("Angular velocity around the Y-axis " + sensor.y);
@@ -55,8 +57,47 @@ sensor.onreading = () => {
        }
         
 };
-<div class = "loader"></div>
+
 sensor.onerror = event => console.log(event.error.name, event.error.message);
+
+  var audioFiles = [
+    "left.mp3",
+    "right.mp3"
+];
+    
+function preloadAudio(url) {
+    var audio = new Audio();
+    // once this file loads, it will call loadedAudio()
+    // the file will be kept by the browser as cache
+    audio.addEventListener('canplaythrough', loadedAudio, false);
+    audio.src = url;
+}
+    
+var loaded = 0;
+function loadedAudio() {
+    // this will be called every time an audio file is loaded
+    // we keep track of the loaded files vs the requested files
+    loaded++;
+    if (loaded == audioFiles.length){
+      // all have loaded
+      init();
+    }
+}
+    
+    
+function init() {
+    // do your stuff here, audio has been loaded
+    // for example, play all files one after the other
+    var x = document.getElementsByClassName("loader");
+    x[0].style.visibility = "hidden";
+    sensor.start();
+}
+    
+// we start preloading all the audio files
+for (var i in audioFiles) {
+    preloadAudio(audioFiles[i]);
+}
+
    </script>
 
 </body>
