@@ -4,7 +4,8 @@
 	<title></title>
 </head>
 <body>
-   <audio id = "aud"></audio>
+   <audio id = "l" src = "left.mp3" preload="auto" ></audio>
+   <audio id = "r" src = "right.mp3" preload="auto"></audio>
    <script type="text/javascript">
    let sensor = new Gyroscope();
 sensor.start();
@@ -19,15 +20,16 @@ sensor.onreading = () => {
     // x.innerHTML = ""+sensor.x;
     // y.innerHTML = ""+sensor.y;
     // z.innerHTML = ""+sensor.z;
-    var a = document.getElementById("aud");
+    var a = document.getElementById("l");
+    var b = document.getElementById("r");
      
       if(sensor.y > 1)
-        {a.src = "left.mp3";
-         a.play();
+        {
+          a.play();
         }
-     else if(sensor.y < -1)
-       {a.src = "right.mp3";
-        a.play();
+      else if(sensor.y < -1)
+       {
+          b.play();
        }
         
 };
