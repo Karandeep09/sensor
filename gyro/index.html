@@ -27,12 +27,12 @@
 </style>
 </head>
 <body>
-   <audio id = "l" src = "left.mp3" preload="auto" ></audio>
-   <audio id = "r" src = "right.mp3" preload="auto"></audio>
-
+   <!-- <audio id = "l" src = "left.mp3" preload="auto" ></audio>
+   <audio id = "r" src = "right.mp3" preload="auto"></audio> -->
+   <audio id="player"></audio>
      <div class="loader"></div>
-   
    <script type="text/javascript">
+
 let sensor = new Gyroscope();
 sensor.onreading = () => {
     // console.log("Angular velocity around the X-axis " + sensor.x);
@@ -44,16 +44,16 @@ sensor.onreading = () => {
     // x.innerHTML = ""+sensor.x;
     // y.innerHTML = ""+sensor.y;
     // z.innerHTML = ""+sensor.z;
-    var a = document.getElementById("l");
-    var b = document.getElementById("r");
+    // var a = document.getElementById("l");
+    // var b = document.getElementById("r");
      
       if(sensor.y > 1)
         {
-          a.play();
+          pl(0);
         }
       else if(sensor.y < -1)
        {
-          b.play();
+          pl(1);
        }
         
 };
@@ -64,7 +64,14 @@ sensor.onerror = event => console.log(event.error.name, event.error.message);
     "left.mp3",
     "right.mp3"
 ];
-    
+
+
+function pl(index) {
+    var player = document.getElementById('player');
+    player.src = audioFiles[index];
+    player.play();
+}
+
 function preloadAudio(url) {
     var audio = new Audio();
     // once this file loads, it will call loadedAudio()
@@ -91,8 +98,8 @@ function init() {
     var x = document.getElementsByClassName("loader");
     x[0].style.visibility = "hidden";
     sensor.start();
-}
     
+}
 // we start preloading all the audio files
 for (var i in audioFiles) {
     preloadAudio(audioFiles[i]);
